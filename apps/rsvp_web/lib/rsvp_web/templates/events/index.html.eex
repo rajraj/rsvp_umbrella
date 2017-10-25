@@ -1,0 +1,10 @@
+<div class="pull-right">
+  <%= link "Add Event", to: "/events/new", class: "btn btn-primary btn-sm" %>
+</div>
+<h1>Events<h1>
+<%= render RsvpWeb.SharedView, "count.html", list: @events %>
+<div class="list-group">
+  <%= for event <- @events do %>
+    <%= render "event.html", event: event, conn: @conn %>
+  <% end %>
+</div>

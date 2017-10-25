@@ -1,0 +1,15 @@
+<div class="event" id="event" data-id="<%= @event.id %>">
+  <h1><%= @event.title %> <small><%= @event.location %></small></h1>
+  <h3><%= format_start_at @event.start_at %></h3>
+  <hr>
+  <h4>Available Seats: <span id="event_seats_available" class="quantity"><%= available_seats(@event) %></span></h4>
+</div>
+
+<%= form_for @conn, "/events/#{@event.id}/reserve", [as: :reservation], fn f -> %>
+  <div class="form-group">
+    <%= label f, :quantity, "Quantity" %>
+    <%= number_input f, :quantity, minlength: 1, class: "form-control" %>
+  </div>
+
+  <%= submit "Reserve", class: "btn btn-primary" %>
+<% end %>

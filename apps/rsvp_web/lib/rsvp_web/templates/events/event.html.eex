@@ -1,0 +1,7 @@
+<div class="list-group-item">
+  <h2><%= @event.title %> <small><%= @event.location %></small></h2>
+  <h3><%= format_start_at @event.start_at %></h3>
+  <%= link "View event details", to: "/events/#{@event.id}" %>
+  <hr>
+  <h4>Available Seats: <span class="quantity"><%= available_seats(@event) %></span></h4>
+</div>
